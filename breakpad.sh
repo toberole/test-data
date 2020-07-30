@@ -15,6 +15,11 @@ dir1=`echo $head | awk '{print $4}'`
 dir2=`echo $head | awk '{print $5}'`
 
 echo $dir1
-
 echo $dir2
+
+mkdir -p symbols/$dir2/$dir1
+
+mv ${so_file_name}.so.sym symbols/$dir2/$dir1
+
+
 
