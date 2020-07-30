@@ -1,5 +1,6 @@
 #!/bin/sh
 read -p "please input so path:" so_file_name
+read -p "please input dmp name:" dmp_name
 
 touch ${so_file_name}.so.sym
 
@@ -21,5 +22,5 @@ mkdir -p symbols/$dir2/$dir1
 
 mv ${so_file_name}.so.sym symbols/$dir2/$dir1
 
-
+./minidump_stackwalk ${dmp_name}.dmp symbols > crash.log
 
