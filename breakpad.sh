@@ -5,9 +5,9 @@ read -p "please input dmp name:" dmp_file_path
 so_file_name=$(basename ${so_file_path})
 dmp_file_name=$(basename ${dmp_file_path})
 
-cp $so_file_path so_file_name
+cp $so_file_path $so_file_name
 
-cp $dmp_file_path dmp_file_name
+cp $dmp_file_path $dmp_file_name
 
 chmod 777 so_file_name
 chmod 777 dmp_file_name
@@ -33,5 +33,5 @@ mkdir -p symbols/$dir2/$dir1
 
 mv $so_file_name.sym symbols/$dir2/$dir1
 
-./minidump_stackwalk $dmp_file_name symbols > crash.log
+#./minidump_stackwalk $dmp_file_name symbols > crash.log
 
