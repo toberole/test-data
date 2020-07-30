@@ -1,0 +1,16 @@
+1 ./dump_syms libbreakpad-core.so > libbreakpad-core.so.sym
+
+
+2 head -n1 libbreakpad-core.so.sym 
+	MODULE Linux arm 38036802AF22533DD508A9AE6D433B140 libbreakpad-core.so
+
+
+
+3 mkdir -p symbols/libbreakpad-core.so/38036802AF22533DD508A9AE6D433B140
+
+
+4 mv libbreakpad-core.so.sym symbols/libbreakpad-core.so/38036802AF22533DD508A9AE6D433B140
+
+5 ./minidump_stackwalk 1596095873544.dmp symbols > crash.log
+
+
