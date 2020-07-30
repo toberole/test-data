@@ -1,13 +1,19 @@
 #!/bin/sh
 read -p "please input so path:" so_file_path
-read -p "please input dmp name:" dmp_path
+read -p "please input dmp name:" dmp_file_path
 
-cp so_file_path ./crash.so
-cp dmp_file_path ./crash_dmp.dmp
+cp $so_file_path crash.so
+
+cp $dmp_file_path crashdmp.dmp
+
+chmod 777 crash.so
+chmod 777 crashdmp.dmp
 
 touch crash.so.sym
 
+
 chmod 777 crash.so.sym
+
 
 ./dump_syms crash.so > crash.so.sym
 
