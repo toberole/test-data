@@ -11,13 +11,8 @@ head="$(head -n1 ${so_file_name}.so.sym)"
 
 echo $head
 
-s1=""
-s2=""
-s3=""
-dir1=""
-dir2=""
-
-eval $(echo $head | awk '{ printf("s1=%s;s2=%s;s3=%s;dir1=%s;dir2=%s",$1,$2,,$3,$4,$5)}')
+dir1=`echo $head | awk '{print $4}'`
+dir2=`echo $head | awk '{print $5}'`
 
 echo $dir1
 
