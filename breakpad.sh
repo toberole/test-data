@@ -1,14 +1,17 @@
 #!/bin/sh
-read -p "please input so path:" so_file_name
-read -p "please input dmp name:" dmp_name
+read -p "please input so path:" so_file_path
+read -p "please input dmp name:" dmp_path
 
-touch ${so_file_name}.so.sym
+cp so_file_path ./crash.so
+cp dmp_file_path ./crash_dmp.dmp
 
-chmod 777 ${so_file_name}.so.sym
+touch crash.so.sym
 
-./dump_syms ${so_file_name}.so > ${so_file_name}.so.sym
+chmod 777 crash.so.sym
 
-head="$(head -n1 ${so_file_name}.so.sym)"
+./dump_syms crash.so > crash.so.sym
+
+head="$(head -n1 crash.so.sym)"
 
 echo $head
 
@@ -20,7 +23,7 @@ echo $dir2
 
 mkdir -p symbols/$dir2/$dir1
 
-mv ${so_file_name}.so.sym symbols/$dir2/$dir1
+mv crash.so.sym symbols/$dir2/$dir1
 
-./minidump_stackwalk ${dmp_name}.dmp symbols > crash.log
+./minidump_stackwalk crash_dmp.dmp symbols > crash.log
 
